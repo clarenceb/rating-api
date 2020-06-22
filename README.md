@@ -7,6 +7,24 @@ Required configuration via environment variables:
 
 Upon startup, the application checks if it can connect to the database. If the database is empty, it populates it with data.
 
+## (Optional) MongoDB install in Kubernetes
+
+```sh
+# See Mongo DB Helm Chart (https://github.com/bitnami/charts/tree/master/bitnami/mongodb)
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+
+helm install mongodb bitnami/mongodb \
+    --set persistence.enabled=true \
+    --set mongodbUsername=ratingsuser  \
+    --set mongodbPassword=ratingspassword \
+    --set mongodbDatabase=ratingsdb  \
+    --set mongodbRootPassword=ratingspassword
+
+MONGODB_URI="mongodb://ratingsuser:ratingspassword@mongodb:27017/ratingsdb"
+```
+
 ## Helm install
 
 ```sh
