@@ -7,6 +7,13 @@ Required configuration via environment variables:
 
 Upon startup, the application checks if it can connect to the database. If the database is empty, it populates it with data.
 
+## Helm install
+
+```sh
+helm upgrade --install rating-api ./rating-api \
+    --set env.database_uri=$MONGODB_URI \
+```
+
 # Contributing
 
 
